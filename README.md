@@ -40,3 +40,8 @@ You can check out [the thirdweb GitHub organization](https://github.com/thirdweb
 ## Join our Discord!
 
 For any questions, suggestions, join our discord at [https://discord.gg/thirdweb](https://discord.gg/thirdweb).
+
+
+## About Project 
+
+Developed the CryptoRaise Platform, a blockchain-integrated crowdfunding solution. The interface, crafted with Tailwind CSS and React.js, prioritizes user experience, ensuring optimal responsiveness across devices. The platform incorporates Web3 for real-time blockchain interactions, seamlessly pairs with MetaMask, and employs Solidity for smart contract execution. Users can create, view, and donate to campaigns, facilitating transparent Ethereum transactions and showcasing the potential of decentralized fundraising.
