@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-
 import { useStateContext } from '../context';
 import { CustomButton } from './';
 import { logo, menu, search, thirdweb } from '../assets';
 import { navlinks } from '../constants';
+import { useSnackbar } from 'notistack';
 
 const Navbar = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState('dashboard');
   const [toggleDrawer, setToggleDrawer] = useState(false);
@@ -19,9 +20,29 @@ const Navbar = () => {
           btnType="button"
            title={address ? 'Create a campaign' : 'Connect'}
           styles={address ? 'bg-[#1dc071]' : 'bg-[#8c6dfd]'}
-          handleClick={() => {
+          handleClick={ async () => {
             if(address) navigate('create-campaign')
-            else connect()
+            else{
+              if (!address) {
+                  enqueueSnackbar(
+                    'To proceed, please install the MetaMask extension. Once installed, grab some complimentary SepoliaETH from Sepolia Faucet to start your transactions.',
+                    {
+                        variant: 'warning',
+                        action: (key) => (
+                            <>
+                                <a href="https://metamask.io/" target="_blank" rel="noopener noreferrer" style={{ marginRight: '8px' }}>
+                                    Install MetaMask
+                                </a>
+                                <a href="https://sepoliafaucet.com/" target="_blank" rel="noopener noreferrer">
+                                    Get SepoliaETH
+                                </a>
+                            </>
+                        )
+                        }
+                );
+              }
+             await connect();
+          }
           }}
         />
 
